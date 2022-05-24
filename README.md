@@ -12,3 +12,6 @@ How to use
 5. Add a request with prefix "http://localhost:5000/{endpoints}"
 6. Add data in the body field as JSON
 5. Run the APIs
+
+Postman Link
+    https://www.getpostman.com/collections/519b722cd909ab1bd209
