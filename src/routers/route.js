@@ -29,5 +29,17 @@ router.get("/get/:id", (req,res)=>{
     .catch(error => console.error(error));
 })
 
+router.put("/update/:id", (req,res)=>{
+    let id  = req.params.id;
+    let data = req.body;
+    const query = `update blogs set topic = '${data.topic}', user = '${data.user}', description = '${data.description}' where id = ${id};`
+    sequelize.query(query, {type: QueryTypes.UPDATE})
+    .then((data)=>{
+        res.send(data);
+        console.log(data);
+    })
+    .catch(error => console.error(error));
+})
+
 
 module.exports = router
