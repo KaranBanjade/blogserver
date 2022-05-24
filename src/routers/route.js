@@ -51,5 +51,17 @@ router.delete('/delete/:id', (req,res)=>{
     })
     .catch(error => console.error(error));
 })
+router.get('/filter', (req,res)=>{
+    const data = req.body;
+    if(data.filterType != "time"){
+        const query = `select * from blogs where ${data.field} like '%${data.queryString}%'`;
+        sequelize.query(query, {type: QueryTypes.SELECT})
+        .then((data)=>{
+            res.send(data);
+            console.log(data);
+        })
+        .catch(error => console.error(error));
 
+    }
+})
 module.exports = router
