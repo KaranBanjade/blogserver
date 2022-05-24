@@ -41,5 +41,15 @@ router.put("/update/:id", (req,res)=>{
     .catch(error => console.error(error));
 })
 
+router.delete('/delete/:id', (req,res)=>{
+    let id = req.params.id;
+    const query = `delete from blogs where id = ${id}`
+    sequelize.query(query, {type: QueryTypes.DELETE})
+    .then((data)=>{
+        res.send(data);
+        console.log(data);
+    })
+    .catch(error => console.error(error));
+})
 
 module.exports = router
