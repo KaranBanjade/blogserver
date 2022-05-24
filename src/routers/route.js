@@ -16,5 +16,18 @@ router.post('/insert', (req, res) => {
     })
     .catch(error => console.error(error));
 })
+router.get("/get/:id", (req,res)=>{
+    let id = req.params.id;
+    const query = `select * from blogs where id = ${id}`;
+    sequelize.query(query, {
+        type: QueryTypes.SELECT
+    })
+    .then((data)=>{
+        res.send(data);
+        console.log(data);
+    })
+    .catch(error => console.error(error));
+})
+
 
 module.exports = router
